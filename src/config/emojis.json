@@ -1,7 +1,7 @@
 {
     "normal": {
-        "error": "❌",
-        "check": "✔️",
+        "error": "<:croX:1265257834065432596>",
+        "check": "<:tick:1265257868987469896>",
         "music": "🎵",
         "volume": "🔉",
         "ball": "🎱",
@@ -31,9 +31,9 @@
     },
 
     "economy": {
-        "pocket": "👛",
+        "pocket": "💼",
         "bank": "🏦",
-        "coins": "💰"
+        "coins": "<:OnslaughtCoins:1259460038419021865>"
     },
 
     "music": {
