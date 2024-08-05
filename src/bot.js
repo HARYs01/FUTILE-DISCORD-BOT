@@ -133,6 +133,13 @@ client.commands = new Discord.Collection();
 client.playerManager = new Map();
 client.triviaManager = new Map();
 client.queue = new Map();
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.listen(port, () => {
+    console.log(`🔗 Listening to GlaceYT : http://localhost:${port}`);
+});
 
 // Webhooks
 const consoleLogs = new Discord.WebhookClient({
