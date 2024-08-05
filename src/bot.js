@@ -181,6 +181,14 @@ process.on('unhandledRejection', error => {
     })
 });
 
+    const express = require("express");
+    const app = express();
+    const port = 3000;
+
+app.listen(port, () => {
+    console.log(`🔗 Listening to GlaceYT : http://localhost:${port}`);
+});
+
 process.on('warning', warn => {
     console.warn("Warning:", warn);
     const embed = new Discord.EmbedBuilder()
@@ -224,10 +232,4 @@ client.on(Discord.ShardEvents.Error, error => {
         embeds: [embed],
     });
 });
-const express = require("express");
-const app = express();
-const port = 3000;
 
-app.listen(port, () => {
-    console.log(`🔗 Listening to GlaceYT : http://localhost:${port}`);
-});
