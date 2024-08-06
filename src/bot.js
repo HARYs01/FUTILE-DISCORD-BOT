@@ -63,27 +63,8 @@ if (clientID && clientSecret) {
                 clientID,
                 clientSecret,
             })
-        ],
-        nodes: [
-            {
-                host: process.env.LAVALINK_HOST || "lava.link",
-                port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "CorwinDev",
-                secure: Boolean(process.env.LAVALINK_SECURE) || false
-            },
-            {
-                host: "lava.link",
-                port: 80,
-                password: "CorwinDev"
-            },
-        ],
-        send(id, payload) {
-            const guild = client.guilds.cache.get(id);
-            if (guild) guild.shard.send(payload);
-        },
-    })
-
-} else {
+        )
+        
     // Lavalink client
     client.player = new Manager({
         plugins: [
@@ -93,9 +74,9 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lava.link",
-                port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "CorwinDev",
+                host: process.env.LAVALINK_HOST || "107.150.34.106",
+                port: parseInt(process.env.LAVALINK_PORT) || 1556,
+                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
