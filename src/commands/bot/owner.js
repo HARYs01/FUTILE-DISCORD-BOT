@@ -17,7 +17,7 @@ module.exports = async (client, interaction, args) => {
         },
         {
             name: "🏢┆Organization",
-            value: `Nothing`,
+            value: `Not given`,
             inline: true,
         },
         {
