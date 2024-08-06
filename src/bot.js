@@ -31,7 +31,7 @@ const client = new Discord.Client({
     intents: [
         Discord.GatewayIntentBits.Guilds,
         Discord.GatewayIntentBits.GuildMembers,
-        Discord.GatewayIntentBits.GuildBans,
+        DiscordIntentBits.GuildBans,
         Discord.GatewayIntentBits.GuildEmojisAndStickers,
         Discord.GatewayIntentBits.GuildIntegrations,
         Discord.GatewayIntentBits.GuildWebhooks,
@@ -50,42 +50,39 @@ const client = new Discord.Client({
 });
 
 
+const plugins = [
+    new AppleMusic(),
+    new Deezer(),
+    new Facebook(),
+]
 const clientID = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-if (clientID && clientSecret) {
-    // Lavalink client
-    client.player = new Manager({
-        plugins: [
-            new AppleMusic(),
-            new Deezer(),
-            new Facebook(),
-            new Spotify({
-                clientID,
-                clientSecret,
-            })
-        )
-        
-    // Lavalink client
-    client.player = new Manager({
-        plugins: [
-            new AppleMusic(),
-            new Deezer(),
-            new Facebook(),
-        ],
-        nodes: [
-            {
-                host: process.env.LAVALINK_HOST || "107.150.34.106",
-                port: parseInt(process.env.LAVALINK_PORT) || 1556,
-                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
-                secure: Boolean(process.env.LAVALINK_SECURE) || false
-            },
-        ],
-        send(id, payload) {
-            const guild = client.guilds.cache.get(id);
-            if (guild) guild.shard.send(payload);
-        }
+
+if (clientID && clientSecret) plugins.push(
+    new Spotify({
+        clientID,
+        clientSecret,
     })
-}
+)
+
+// Lavalink client
+client.player = new Manager({
+    plugins,
+    nodes: [
+        {
+            host: process.env.LAVALINK_HOST || "107.150.34.106",
+            port: parseInt(process.env.LAVALINK_PORT) || 1556,
+            password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
+            secure: Boolean(process.env.LAVALINK_SECURE) || false
+        },
+    ],
+    send(id, payload) {
+        const guild = client.guilds.cache.get(id);
+        if (guild) guild.shard.send(payload);
+    }
+})
+
+
 const events = fs.readdirSync(`./src/events/music`).filter(files => files.endsWith('.js'));
 
 for (const file of events) {
@@ -94,7 +91,7 @@ for (const file of events) {
 };
 
 // Connect to database
-require("./database/connect")();
+;(async () => await require("./database/connect")())();
 
 // Client settings
 client.config = require('./config/bot');
@@ -114,13 +111,6 @@ client.commands = new Discord.Collection();
 client.playerManager = new Map();
 client.triviaManager = new Map();
 client.queue = new Map();
-const express = require("express");
-const app = express();
-const port = 3000;
-
-app.listen(port, () => {
-    console.log(`🔗 Listening to GlaceYT : http://localhost:${port}`);
-});
 
 // Webhooks
 const consoleLogs = new Discord.WebhookClient({
@@ -146,7 +136,7 @@ process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
     if (error) if (error.length > 950) error = error.slice(0, 950) + '... view console for details';
     if (error.stack) if (error.stack.length > 950) error.stack = error.stack.slice(0, 950) + '... view console for details';
-    if(!error.stack) return
+    if (!error.stack) return
     const embed = new Discord.EmbedBuilder()
         .setTitle(`🚨・Unhandled promise rejection`)
         .addFields([
@@ -187,29 +177,5 @@ process.on('warning', warn => {
         console.log('Error sending warning to webhook')
         console.log(warn)
     })
-});
-
-client.on(Discord.ShardEvents.Error, error => {
-    console.log(error)
-    if (error) if (error.length > 950) error = error.slice(0, 950) + '... view console for details';
-    if (error.stack) if (error.stack.length > 950) error.stack = error.stack.slice(0, 950) + '... view console for details';
-    if (!error.stack) return
-    const embed = new Discord.EmbedBuilder()
-        .setTitle(`🚨・A websocket connection encountered an error`)
-        .addFields([
-            {
-                name: `Error`,
-                value: `\`\`\`${error}\`\`\``,
-            },
-            {
-                name: `Stack error`,
-                value: `\`\`\`${error.stack}\`\`\``,
-            }
-        ])
-        .setColor(client.config.colors.normal)
-    consoleLogs.send({
-        username: 'Bot Logs',
-        embeds: [embed],
-    });
 });
 
