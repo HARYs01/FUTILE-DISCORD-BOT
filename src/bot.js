@@ -72,9 +72,9 @@ if (clientID && clientSecret) {
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: "37.114.42.191",
-                port: 6767,
-                password: "danteisnttaken"
+                host: "lava.link",
+                port: 80,
+                password: "CorwinDev"
             },
         ],
         send(id, payload) {
