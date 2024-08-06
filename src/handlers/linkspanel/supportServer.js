@@ -22,7 +22,7 @@ module.exports = async (client) => {
                                 },
                                 {
                                     label: `Invite Bot`,
-                                    description: `Invite Bot to your server`,
+                                    description: `Sorry you are not allowed to Invite Bot to your server`,
                                     emoji: "📨",
                                     value: "invite-linkspanel",
                                 },
@@ -51,7 +51,7 @@ module.exports = async (client) => {
 
                 client.embed({
                     title: `❓・Support Server`,
-                    desc: `Make your server even better with Bot!`,
+                    desc: `Make your server even better with Bot! Sorry but you are not allowed to invite the bot!`,
                     image: "https://cdn.discordapp.com/attachments/843487478881976381/874694194474668052/Bot_banner_invite.jpg",
                     url: client.config.discord.serverInvite,
                     components: [row2, row],
