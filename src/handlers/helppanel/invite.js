@@ -56,7 +56,7 @@ module.exports = async (client) => {
 
                 client.embed({
                     title: `📨・Invite`,
-                    desc: `Make your server even better with the ${client.user.username} bot!`,
+                    desc: `Make your server even better with the ${client.user.username} bot!Sorry you are not allowed to Invite Bot to your server`,
                     image: "https://cdn.discordapp.com/attachments/843487478881976381/874694194474668052/dbot_banner_invite.jpg",
                     url: client.config.discord.botInvite,
                     components: [row2, row],
