@@ -93,9 +93,9 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lava.link",
-                port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "CorwinDev",
+                host: process.env.LAVALINK_HOST || "107.150.34.106",
+                port: parseInt(process.env.LAVALINK_PORT) || 1556,
+                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
