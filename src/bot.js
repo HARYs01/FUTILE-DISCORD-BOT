@@ -72,9 +72,9 @@ if (clientID && clientSecret) {
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: "lavalink.techpoint.world",
-                port: 80,
-                password: "techpoint"
+                host: "107.150.34.106",
+                port: 1556,
+                password: "spicydevs.js.org"
             },
         ],
         send(id, payload) {
@@ -111,6 +111,13 @@ for (const file of events) {
     const event = require(`./events/music/${file}`);
     client.player.on(file.split(".")[0], event.bind(null, client)).setMaxListeners(0);
 };
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.listen(port, () => {
+    console.log(`🔗 Listening to GlaceYT : http://localhost:${port}`);
+});
 
 // Connect to database
 require("./database/connect")();
