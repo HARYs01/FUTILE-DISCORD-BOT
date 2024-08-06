@@ -31,7 +31,7 @@ const client = new Discord.Client({
     intents: [
         Discord.GatewayIntentBits.Guilds,
         Discord.GatewayIntentBits.GuildMembers,
-        DiscordIntentBits.GuildBans,
+        Discord.GatewayIntentBits.GuildBans,
         Discord.GatewayIntentBits.GuildEmojisAndStickers,
         Discord.GatewayIntentBits.GuildIntegrations,
         Discord.GatewayIntentBits.GuildWebhooks,
@@ -50,39 +50,61 @@ const client = new Discord.Client({
 });
 
 
-const plugins = [
-    new AppleMusic(),
-    new Deezer(),
-    new Facebook(),
-]
 const clientID = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-
-if (clientID && clientSecret) plugins.push(
-    new Spotify({
-        clientID,
-        clientSecret,
-    })
-)
-
-// Lavalink client
-client.player = new Manager({
-    plugins,
-    nodes: [
-        {
-            host: process.env.LAVALINK_HOST || "107.150.34.106",
-            port: parseInt(process.env.LAVALINK_PORT) || 1556,
-            password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
-            secure: Boolean(process.env.LAVALINK_SECURE) || false
+if (clientID && clientSecret) {
+    // Lavalink client
+    client.player = new Manager({
+        plugins: [
+            new AppleMusic(),
+            new Deezer(),
+            new Facebook(),
+            new Spotify({
+                clientID,
+                clientSecret,
+            })
+        ],
+        nodes: [
+            {
+                host: process.env.LAVALINK_HOST || "107.150.34.106",
+                port: parseInt(process.env.LAVALINK_PORT) || 1556,
+                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
+                secure: Boolean(process.env.LAVALINK_SECURE) || false
+            },
+            {
+                host: "lavalink.techpoint.world",
+                port: 80,
+                password: "techpoint"
+            },
+        ],
+        send(id, payload) {
+            const guild = client.guilds.cache.get(id);
+            if (guild) guild.shard.send(payload);
         },
-    ],
-    send(id, payload) {
-        const guild = client.guilds.cache.get(id);
-        if (guild) guild.shard.send(payload);
-    }
-})
+    })
 
-
+} else {
+    // Lavalink client
+    client.player = new Manager({
+        plugins: [
+            new AppleMusic(),
+            new Deezer(),
+            new Facebook(),
+        ],
+        nodes: [
+            {
+                host: process.env.LAVALINK_HOST || "lava.link",
+                port: parseInt(process.env.LAVALINK_PORT) || 80,
+                password: process.env.LAVALINK_PASSWORD || "CorwinDev",
+                secure: Boolean(process.env.LAVALINK_SECURE) || false
+            },
+        ],
+        send(id, payload) {
+            const guild = client.guilds.cache.get(id);
+            if (guild) guild.shard.send(payload);
+        }
+    })
+}
 const events = fs.readdirSync(`./src/events/music`).filter(files => files.endsWith('.js'));
 
 for (const file of events) {
@@ -91,7 +113,7 @@ for (const file of events) {
 };
 
 // Connect to database
-;(async () => await require("./database/connect")())();
+require("./database/connect")();
 
 // Client settings
 client.config = require('./config/bot');
@@ -136,7 +158,7 @@ process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
     if (error) if (error.length > 950) error = error.slice(0, 950) + '... view console for details';
     if (error.stack) if (error.stack.length > 950) error.stack = error.stack.slice(0, 950) + '... view console for details';
-    if (!error.stack) return
+    if(!error.stack) return
     const embed = new Discord.EmbedBuilder()
         .setTitle(`🚨・Unhandled promise rejection`)
         .addFields([
@@ -179,3 +201,26 @@ process.on('warning', warn => {
     })
 });
 
+client.on(Discord.ShardEvents.Error, error => {
+    console.log(error)
+    if (error) if (error.length > 950) error = error.slice(0, 950) + '... view console for details';
+    if (error.stack) if (error.stack.length > 950) error.stack = error.stack.slice(0, 950) + '... view console for details';
+    if (!error.stack) return
+    const embed = new Discord.EmbedBuilder()
+        .setTitle(`🚨・A websocket connection encountered an error`)
+        .addFields([
+            {
+                name: `Error`,
+                value: `\`\`\`${error}\`\`\``,
+            },
+            {
+                name: `Stack error`,
+                value: `\`\`\`${error.stack}\`\`\``,
+            }
+        ])
+        .setColor(client.config.colors.normal)
+    consoleLogs.send({
+        username: 'Bot Logs',
+        embeds: [embed],
+    });
+});
