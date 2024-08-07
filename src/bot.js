@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lavalink.koyu.space",
-                port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "koyulavalink",
-                secure: Boolean(process.env.LAVALINK_SECURE) || true
+                host: process.env.LAVALINK_HOST || "37.114.42.191",
+                port: parseInt(process.env.LAVALINK_PORT) || 9906,
+                password: process.env.LAVALINK_PASSWORD || "danteisnttaken",
+                secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: "lavalink.koyu.space",
-                port: 443,
-                password: "koyulavalink"
+                host: "37.114.42.191",
+                port: 9906,
+                password: "danteisnttaken"
             },
         ],
         send(id, payload) {
@@ -93,10 +93,10 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lavalink.koyu.space",
-                port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "koyulavalink",
-                secure: Boolean(process.env.LAVALINK_SECURE) || true
+                host: process.env.LAVALINK_HOST || "37.114.42.191",
+                port: parseInt(process.env.LAVALINK_PORT) || 9906,
+                password: process.env.LAVALINK_PASSWORD || "danteisnttaken",
+                secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
         send(id, payload) {
