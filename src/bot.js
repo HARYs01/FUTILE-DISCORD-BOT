@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lavalink.clxud.dev",
-                port: parseInt(process.env.LAVALINK_PORT) || 2333,
-                password: process.env.LAVALINK_PASSWORD || "youshallnotpass",
+                host: process.env.LAVALINK_HOST || " lava-v3.ajieblogs.eu.org",
+                port: parseInt(process.env.LAVALINK_PORT) || 80,
+                password: process.env.LAVALINK_PASSWORD || "https://dsc.gg/ajidevserver",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: "lavalink.clxud.dev",
-                port: 2333,
-                password: "youshallnotpass"
+                host: " lava-v3.ajieblogs.eu.org",
+                port: 80,
+                password: "https://dsc.gg/ajidevserver"
             },
         ],
         send(id, payload) {
@@ -93,9 +93,9 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lavalink.clxud.dev",
-                port: parseInt(process.env.LAVALINK_PORT) || 2333,
-                password: process.env.LAVALINK_PASSWORD || "youshallnotpass",
+                host: process.env.LAVALINK_HOST || " lava-v3.ajieblogs.eu.org",
+                port: parseInt(process.env.LAVALINK_PORT) || 80,
+                password: process.env.LAVALINK_PASSWORD || "https://dsc.gg/ajidevserver",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
