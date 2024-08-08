@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lavalink.serenetia.com",
-                port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "lavalinkv3",
-                secure: Boolean(process.env.LAVALINK_SECURE) || true
+                host: process.env.LAVALINK_HOST || "lavalink.clxud.dev",
+                port: parseInt(process.env.LAVALINK_PORT) || 2333,
+                password: process.env.LAVALINK_PASSWORD || "youshallnotpass",
+                secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: "lavalink.serenetia.com",
-                port: 443,
-                password: "lavalinkv3"
+                host: "lavalink.clxud.dev",
+                port: 2333,
+                password: "youshallnotpass"
             },
         ],
         send(id, payload) {
@@ -93,10 +93,10 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "lavalink.serenetia.com",
-                port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "lavalinkv3",
-                secure: Boolean(process.env.LAVALINK_SECURE) || true
+                host: process.env.LAVALINK_HOST || "lavalink.clxud.dev",
+                port: parseInt(process.env.LAVALINK_PORT) || 2333,
+                password: process.env.LAVALINK_PASSWORD || "youshallnotpass",
+                secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
         send(id, payload) {
