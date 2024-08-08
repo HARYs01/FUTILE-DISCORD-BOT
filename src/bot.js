@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "v3.lavalink.rocks",
+                host: process.env.LAVALINK_HOST || "lavalink.oddcoder.xyz",
                 port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "horizxon.tech",
+                password: process.env.LAVALINK_PASSWORD || "oddcoder",
                 secure: Boolean(process.env.LAVALINK_SECURE) || true
             },
             {
-                host: "v3.lavalink.rocks",
+                host: "lavalink.oddcoder.xyz",
                 port: 443,
-                password: "horizxon.tech"
+                password: "oddcoder"
             },
         ],
         send(id, payload) {
@@ -93,9 +93,9 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "v3.lavalink.rocks",
+                host: process.env.LAVALINK_HOST || "lavalink.oddcoder.xyz",
                 port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "horizxon.tech",
+                password: process.env.LAVALINK_PASSWORD || "oddcoder",
                 secure: Boolean(process.env.LAVALINK_SECURE) || true
             },
         ],
