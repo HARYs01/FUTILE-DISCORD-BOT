@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "107.150.34.106",
-                port: parseInt(process.env.LAVALINK_PORT) || 1556,
-                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
+                host: process.env.LAVALINK_HOST || "209.145.62.164",
+                port: parseInt(process.env.LAVALINK_PORT) || 50117,
+                password: process.env.LAVALINK_PASSWORD || redant,
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: "107.150.34.106",
-                port: 1556,
-                password: "spicydevs.js.org"
+                host: "209.145.62.164",
+                port: 50117,
+                password: redant
             },
         ],
         send(id, payload) {
@@ -93,9 +93,9 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "107.150.34.106",
-                port: parseInt(process.env.LAVALINK_PORT) || 1556,
-                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
+                host: process.env.LAVALINK_HOST || "209.145.62.164",
+                port: parseInt(process.env.LAVALINK_PORT) || 50117,
+                password: process.env.LAVALINK_PASSWORD || redant,
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
