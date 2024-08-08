@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "209.145.62.164",
+                host: process.env.LAVALINK_HOST || "ssl.lavalink.rocks",
                 port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "redant",
-                secure: Boolean(process.env.LAVALINK_SECURE) || false
+                password: process.env.LAVALINK_PASSWORD || "horizxon.tech",
+                secure: Boolean(process.env.LAVALINK_SECURE) || true
             },
             {
-                host: "209.145.62.164",
+                host: "ssl.lavalink.rocks",
                 port: 443,
-                password: "redant"
+                password: "horizxon.tech"
             },
         ],
         send(id, payload) {
@@ -93,10 +93,10 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || "209.145.62.164",
+                host: process.env.LAVALINK_HOST || "ssl.lavalink.rocks",
                 port: parseInt(process.env.LAVALINK_PORT) || 443,
-                password: process.env.LAVALINK_PASSWORD || "redant",
-                secure: Boolean(process.env.LAVALINK_SECURE) || false
+                password: process.env.LAVALINK_PASSWORD || "horizxon.tech",
+                secure: Boolean(process.env.LAVALINK_SECURE) || true
             },
         ],
         send(id, payload) {
