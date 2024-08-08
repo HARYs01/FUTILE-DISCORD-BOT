@@ -66,15 +66,15 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || " lava-v3.ajieblogs.eu.org",
-                port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "https://dsc.gg/ajidevserver",
+                host: process.env.LAVALINK_HOST || "107.150.34.106",
+                port: parseInt(process.env.LAVALINK_PORT) || 1556,
+                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
-                host: " lava-v3.ajieblogs.eu.org",
-                port: 80,
-                password: "https://dsc.gg/ajidevserver"
+                host: "107.150.34.106",
+                port: 1556,
+                password: "spicydevs.js.org"
             },
         ],
         send(id, payload) {
@@ -93,9 +93,9 @@ if (clientID && clientSecret) {
         ],
         nodes: [
             {
-                host: process.env.LAVALINK_HOST || " lava-v3.ajieblogs.eu.org",
-                port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "https://dsc.gg/ajidevserver",
+                host: process.env.LAVALINK_HOST || "107.150.34.106",
+                port: parseInt(process.env.LAVALINK_PORT) || 1556,
+                password: process.env.LAVALINK_PASSWORD || "spicydevs.js.org",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
