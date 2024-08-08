@@ -67,13 +67,13 @@ if (clientID && clientSecret) {
         nodes: [
             {
                 host: process.env.LAVALINK_HOST || "209.145.62.164",
-                port: parseInt(process.env.LAVALINK_PORT) || 50117,
+                port: parseInt(process.env.LAVALINK_PORT) || 443,
                 password: process.env.LAVALINK_PASSWORD || "redant",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
                 host: "209.145.62.164",
-                port: 50117,
+                port: 443,
                 password: "redant"
             },
         ],
@@ -94,7 +94,7 @@ if (clientID && clientSecret) {
         nodes: [
             {
                 host: process.env.LAVALINK_HOST || "209.145.62.164",
-                port: parseInt(process.env.LAVALINK_PORT) || 50117,
+                port: parseInt(process.env.LAVALINK_PORT) || 443,
                 password: process.env.LAVALINK_PASSWORD || "redant",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
