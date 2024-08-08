@@ -30,7 +30,7 @@ module.exports = async (client, interaction, args) => {
                         inline: true
                     },
                     {
-                        name: `💰┆Total`,
+                        name: `${client.emotes.economy.pocket}┆Total`,
                         value: `$${total}`,
                         inline: true
                     }
