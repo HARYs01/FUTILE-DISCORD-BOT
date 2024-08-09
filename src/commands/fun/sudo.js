@@ -8,7 +8,7 @@ module.exports = async (client, interaction, args) => {
     if (text.length >= 2000) return client.errNormal({ error: "You may not use more than 2000 characters!", type: 'editreply' }, interaction);
 
     interaction.channel.createWebhook({
-        name: user.username,
+        name: user.displayName,
         avatar: user.displayAvatarURL(),
     }).then(async (_webhook) => {
         await _webhook.send(client.removeMentions(text));
